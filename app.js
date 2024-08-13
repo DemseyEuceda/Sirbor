@@ -31,6 +31,7 @@ pero si mando un 0 es falso
 //en este if estoy haciendo un diferencia "!=" lo cual significa que si es diferente esa parte del if 
 //dara como resultado un verdadero y se ejecutará lo que esta dentro del if
 if(window.localStorage.getItem("sirhbor") != "cris" || !window.localStorage.getItem("sirhbor") ){
+    let path = window.location.pathname;
     if( path.substring(path.lastIndexOf('/') + 1)!="index.html")
         window.location.href ="index.html";
 }
