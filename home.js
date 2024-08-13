@@ -31,11 +31,11 @@ let list = [];
 /// esta función regresa al login esa en home.html en el primer boton 
 function regresar(){
     window.localStorage.clear()
-    window.location.href = "file:///C:/Users/bboyr/Documents/Sirbor/index.html?";
+    window.location.href = "index.html?";
 }
 /// esta función redirige al NuevoEmpleado.html
 function nuevoEmpleado(){
-    window.location.href = "file:///C:/Users/bboyr/Documents/Sirbor/nuevoEmpleado.html";
+    window.location.href = "nuevoEmpleado.html";
 }
 
 /*

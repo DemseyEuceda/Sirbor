@@ -17,7 +17,7 @@ else
 
 //document.getElementById("nombre").value = window.localStorage.getItem("nombre");
 
-
+console.log(window.location.pathname)
 /*
 
 en los if cuando tienen una cadena vacia tira un falso
@@ -31,8 +31,8 @@ pero si mando un 0 es falso
 //en este if estoy haciendo un diferencia "!=" lo cual significa que si es diferente esa parte del if 
 //dara como resultado un verdadero y se ejecutará lo que esta dentro del if
 if(window.localStorage.getItem("sirhbor") != "cris" || !window.localStorage.getItem("sirhbor") ){
-    if(window.location.href !="file:///C:/Users/bboyr/Documents/Sirbor/index.html?")
-        window.location.href ="file:///C:/Users/bboyr/Documents/Sirbor/index.html?";
+    if( path.substring(path.lastIndexOf('/') + 1)!="index.html")
+        window.location.href ="index.html";
 }
     
 
@@ -51,7 +51,7 @@ function login(){
     let password = document.getElementById("password").value;
     if(usuario ==user && password == pass){
         window.localStorage.setItem("sirhbor", "cris")
-        window.location.href = "file:///C:/Users/bboyr/Documents/Sirbor/home.html";
+        window.location.href = "home.html";
     }else
         alert("usuario o contraseña incorrec")
 
