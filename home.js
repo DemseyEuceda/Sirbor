@@ -78,6 +78,7 @@ else
 //lista que se
 /// que se creo antes 
 function crear(){
+    list = []
     let nombre = document.getElementById("nombre").value;
     let apellido = document.getElementById("apellido").value;
     let cargo = document.getElementById("cargo").value;
@@ -85,7 +86,8 @@ function crear(){
     /*
     data es un tipo de objeto llamado json, este tipo de objeto es lo principal en peticiones https y en lenguajes como javascript
     */
-    if(JSON.parse(localStorage.getItem("list")).length != 0)
+    
+    if(JSON.parse(localStorage.getItem("list")))
         list = JSON.parse(localStorage.getItem("list"));
         
 
@@ -110,13 +112,10 @@ var lista = JSON.parse(localStorage.getItem("list"))
 
            
        
-              
-              
-      
-
-
+            
+let count = 1;
 lista.forEach(element => {
-    let count = 0;
+    
     document.getElementById("tabla").innerHTML += `
             
             <tr>
@@ -128,6 +127,10 @@ lista.forEach(element => {
 
     `
     count++;
+
+
+    
+
    
     
 });
