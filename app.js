@@ -38,7 +38,6 @@ if(window.localStorage.getItem("sirhbor") != "cris" || !window.localStorage.getI
 
 function sirhbor(){
     let ahora = new Date();   
-    let segundo = ahora.getSeconds();
     if((ahora.getSeconds()>0 && ahora.getSeconds()<10) || (ahora.getSeconds()%2 == 0)  )
         document.getElementById("texto").innerHTML +=juan
     else if (ahora.getSeconds()>10 && ahora.getSeconds()<20)
