@@ -34,6 +34,7 @@ function regresar(){
     window.location.href = "index.html?";
 }
 /// esta función redirige al NuevoEmpleado.html
+
 function nuevoEmpleado(){
     window.location.href = "nuevoEmpleado.html";
 }
@@ -78,59 +79,69 @@ else
 //lista que se
 /// que se creo antes 
 function crear(){
-    list = []
+
     let nombre = document.getElementById("nombre").value;
     let apellido = document.getElementById("apellido").value;
     let cargo = document.getElementById("cargo").value;
-
     /*
     data es un tipo de objeto llamado json, este tipo de objeto es lo principal en peticiones https y en lenguajes como javascript
     */
-    
     if(JSON.parse(localStorage.getItem("list")))
         list = JSON.parse(localStorage.getItem("list"));
-        
-
-
-
-
+    
     let data = {nombre :nombre, apellido : apellido, cargo : cargo};
     list.push(data);
     document.getElementById("nombre").value = "";
     document.getElementById("apellido").value = "";
     document.getElementById("cargo").value = "";
-    window.localStorage.setItem("list", JSON.stringify(list))
+    window.localStorage.setItem("list", JSON.stringify(list));
     console.log(window.localStorage.getItem("list"));
 
 }
 
 
-var lista = JSON.parse(localStorage.getItem("list"))
-
-
-
-
-           
-       
+var lista = JSON.parse(localStorage.getItem("list"));
+   
             
 let count = 1;
-lista.forEach(element => {
+if(lista.length !==0){
+    lista.forEach(element => {
+        document.getElementById("tabla").innerHTML += `            
+                <tr>
+                    <th scope="row">${count}</th>
+                    <td>${element.nombre}</td>
+                    <td>${element.apellido}</td>
+                    <td>${element.cargo}</td>
+                    <td><button class="btn btn-danger" onclick="eliminar(${count})" >E</button>  </td>
+                     <td><button class="btn btn-success" onclick="actualizar(${count})" >E</button>  </td>
+                </tr>
+        `;
+        count++;    
+    });
     
-    document.getElementById("tabla").innerHTML += `
-            
-            <tr>
-                <th scope="row">${count}</th>
-                <td>${element.nombre}</td>
-                <td>${element.apellido}</td>
-                <td>${element.cargo}</td>
-            </tr>
-
-    `
-    count++;
+}
 
 
-    
 
+
+
+function eliminar(e){
+    let list = JSON.parse(localStorage.getItem("list"));
+    let eliminado = e-1
+    let userConfirmed = confirm("esta seguro que desea eliminar?");
+    if (userConfirmed) {
+        delete(list[eliminado])
+        let arraySinNulos = list.filter(item => item !== null && item !== undefined);
+        window.localStorage.setItem("list", JSON.stringify(arraySinNulos));
+        window.location.reload();    
+    } else {
+        // El usuario presionó "Cancelar"
+        console.log("El usuario canceló la acción.");
+        // Aquí puedes poner el código para cancelar la acción
+    }
    
-    
-});
+}
+
+function actualizar(e){
+    window.location.href = "actualizarEmpleado.html?id="+e
+}

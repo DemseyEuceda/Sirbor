@@ -5,13 +5,6 @@ var kerim = "que pedo bello sebastian";
 */
 var user = "juanito@ine.gov.hn";
 var pass = "juanitoToro69";
-var sirvo;
-
-
-if(!window.localStorage.getItem("Juan"))
-    console.log("verdadero")
-else
-    console.log("falso")
 
 //window.localStorage.setItem("nombre" , "valor");
 
@@ -55,16 +48,17 @@ function login(){
         window.location.href = "home.html";
     }else
         alert("usuario o contraseña incorrec")
-
-
-        
-    
 }
 
 
 
 
+let juan; 
 
+if(juan)
+    console.log("verdadero")
+else 
+    console.log("falso")
 
 /*
     < menor que
