@@ -30,8 +30,12 @@
 let list = [];
 /// esta función regresa al login esa en home.html en el primer boton 
 function regresar(){
-    window.localStorage.clear()
-    window.location.href = "index.html?";
+    let cerrar = confirm("esta seguro que desea salir?")
+    if(cerrar){
+        window.localStorage.clear()
+        window.location.href = "index.html?";
+    }
+
 }
 /// esta función redirige al NuevoEmpleado.html
 
@@ -112,8 +116,18 @@ if(lista.length !==0){
                     <td>${element.nombre}</td>
                     <td>${element.apellido}</td>
                     <td>${element.cargo}</td>
-                    <td><button class="btn btn-danger" onclick="eliminar(${count})" >E</button>  </td>
-                     <td><button class="btn btn-success" onclick="actualizar(${count})" >E</button>  </td>
+                    <td><button class="btn btn-success" onclick="actualizar(${count})" >
+                    <span class="material-symbols-outlined">
+                        edit
+                    </span>                  
+                    </button>
+                    </td>
+                    <td>
+                    <button class="btn btn-danger" onclick="eliminar(${count})" >
+                    <span class="material-symbols-outlined">
+                        delete
+                    </span>
+                    </button>  </td>
                 </tr>
         `;
         count++;    
