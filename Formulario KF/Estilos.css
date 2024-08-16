@@ -1,0 +1,13 @@
+.inicio{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.box{
+     border: 200px;
+
+
+}
