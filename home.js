@@ -116,7 +116,8 @@ if(lista.length !==0){
                     <td>${element.nombre}</td>
                     <td>${element.apellido}</td>
                     <td>${element.cargo}</td>
-                    <td><button class="btn btn-success" onclick="actualizar(${count})" >
+                    <td>
+                    <button class="btn btn-success" onclick="actualizar(${count})" >
                     <span class="material-symbols-outlined">
                         edit
                     </span>                  
@@ -127,7 +128,8 @@ if(lista.length !==0){
                     <span class="material-symbols-outlined">
                         delete
                     </span>
-                    </button>  </td>
+                    </button>
+                    </td>
                 </tr>
         `;
         count++;    
