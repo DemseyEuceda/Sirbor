@@ -3,7 +3,7 @@ var juan = "juanito";
 var pedro = "me electrocutaste pedrito";
 var kerim = "que pedo bello sebastian";
 */
-var user = "juanito@ine.gov.hn";
+var user = "juanito@ine.gob.hn";
 var pass = "juanitoToro69";
 
 //window.localStorage.setItem("nombre" , "valor");
@@ -43,11 +43,16 @@ function sirhbor(){
 function login(){
     let usuario = document.getElementById("user").value;
     let password = document.getElementById("password").value;
-    if(usuario ==user && password == pass){
-        window.localStorage.setItem("sirhbor", "cris")
-        window.location.href = "home.html";
-    }else
-        alert("usuario o contraseña incorrec")
+    let data = {email : usuario, pass : password}
+    axios.post("http://192.168.107.80:8000/login", data).then((res)=>{
+        console.log(res.data)
+        if(usuario ==res.data.email && password == res.data.pass){
+            window.localStorage.setItem("sirhbor", "cris")
+            window.location.href = "home.html";
+        }else
+            alert("usuario o contraseña incorrec")
+    })
+   
 }
 
 
