@@ -1,6 +1,9 @@
 
 
 
+
+
+
     class Sirbor {
 
         constructor(pelo, barba, esgracioso, semalea){
@@ -26,8 +29,14 @@
 
 
 
-//// agrego una lista para los empleados que se irán agregando 
-let list = [];
+
+
+
+
+
+
+
+
 /// esta función regresa al login esa en home.html en el primer boton 
 function regresar(){
     let cerrar = confirm("esta seguro que desea salir?")
@@ -90,11 +99,17 @@ function crear(){
     /*
     data es un tipo de objeto llamado json, este tipo de objeto es lo principal en peticiones https y en lenguajes como javascript
     */
+   /*
     if(JSON.parse(localStorage.getItem("list")))
         list = JSON.parse(localStorage.getItem("list"));
-    
+    */
     let data = {nombre :nombre, apellido : apellido, cargo : cargo};
-    list.push(data);
+    axios.post('http://localhost:8000/agregarPersonal', data).then(res=>{
+        console.log(res.data)
+    })
+
+
+    //list.push(data);
     document.getElementById("nombre").value = "";
     document.getElementById("apellido").value = "";
     document.getElementById("cargo").value = "";
@@ -107,34 +122,51 @@ function crear(){
 var lista = JSON.parse(localStorage.getItem("list"));
    
             
-let count = 1;
-if(lista.length !==0){
-    lista.forEach(element => {
-        document.getElementById("tabla").innerHTML += `            
-                <tr>
-                    <th scope="row">${count}</th>
-                    <td>${element.nombre}</td>
-                    <td>${element.apellido}</td>
-                    <td>${element.cargo}</td>
-                    <td>
-                    <button class="btn btn-success" onclick="actualizar(${count})" >
-                    <span class="material-symbols-outlined">
-                        edit
-                    </span>                  
-                    </button>
-                    </td>
-                    <td>
-                    <button class="btn btn-danger" onclick="eliminar(${count})" >
-                    <span class="material-symbols-outlined">
-                        delete
-                    </span>
-                    </button>
-                    </td>
-                </tr>
-        `;
-        count++;    
-    });
+//// agrego una lista para los empleados que se irán agregando
+var list = []
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Aquí va la función que quieres ejecutar
+    initHome();
+});
+
+function initHome(){
+    axios.get("http://localhost:8000/getPersonas")
+.then((res)=>{  
+    list = res.data
+    if(list.length !==0){
+        list.forEach(element => {
+            console.log(element)
+            document.getElementById("tabla").innerHTML += `            
+                    <tr>
+                        <th scope="row">${element.id}</th>
+                        <td>${element.nombre}</td>
+                        <td>${element.apellido}</td>
+                        <td>${element.cargo}</td>
+                        <td>
+                        <button class="btn btn-success" onclick="actualizar(${element.id})" >
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>                  
+                        </button>
+                        </td>
+                        <td>
+                        <button class="btn btn-danger" onclick="eliminar(${element.id})" >
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                        </button>
+                        </td>
+                    </tr>
+            `;
+            ;    
+        });
+        
+    }
     
+});
+
+
 }
 
 
@@ -146,10 +178,16 @@ function eliminar(e){
     let eliminado = e-1
     let userConfirmed = confirm("esta seguro que desea eliminar?");
     if (userConfirmed) {
+        /*
         delete(list[eliminado])
         let arraySinNulos = list.filter(item => item !== null && item !== undefined);
         window.localStorage.setItem("list", JSON.stringify(arraySinNulos));
-        window.location.reload();    
+        */
+        axios.delete(`http://localhost:8000/eliminarPersona/${e}`).then((res)=>{
+            console.log(res.data)
+            window.location.reload(); 
+        })
+          
     } else {
         // El usuario presionó "Cancelar"
         console.log("El usuario canceló la acción.");
