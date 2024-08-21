@@ -104,7 +104,7 @@ function crear(){
         list = JSON.parse(localStorage.getItem("list"));
     */
     let data = {nombre :nombre, apellido : apellido, cargo : cargo};
-    axios.post('http://localhost:8000/agregarPersonal', data).then(res=>{
+    axios.post('http://192.168.107.80:8000/agregarPersonal', data).then(res=>{
         console.log(res.data)
     })
 
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initHome(){
-    axios.get("http://localhost:8000/getPersonas")
+    axios.get("http://192.168.107.80:8000/getPersonas")
 .then((res)=>{  
     list = res.data
     if(list.length !==0){
@@ -183,7 +183,7 @@ function eliminar(e){
         let arraySinNulos = list.filter(item => item !== null && item !== undefined);
         window.localStorage.setItem("list", JSON.stringify(arraySinNulos));
         */
-        axios.delete(`http://localhost:8000/eliminarPersona/${e}`).then((res)=>{
+        axios.delete(`http://192.168.107.80:8000/eliminarPersona/${e}`).then((res)=>{
             console.log(res.data)
             window.location.reload(); 
         })
