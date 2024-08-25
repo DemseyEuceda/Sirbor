@@ -19,14 +19,15 @@ form{
     flex-direction: column;
     padding: 50px;
     width: 420px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(189, 121, 19, 0.459);
     text-align: center;
 
 }
 
+
 form h2{
     font-size: 30px;
-    color: bisque;
+    color: #603452;
     margin-bottom: 35px;
 }
 
@@ -39,9 +40,6 @@ input{
     outline: none;
     color:  #ffffff;
     font-size: 16px;
-}
-::placeholder{
-background-color: #89879B;
 }
 
 .btn{
