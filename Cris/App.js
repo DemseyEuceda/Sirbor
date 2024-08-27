@@ -36,3 +36,8 @@ function login(){
 
 }
 
+function Doog(){
+console.log("Doog");
+
+}
+
