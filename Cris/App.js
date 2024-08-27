@@ -1,6 +1,10 @@
 var user = "Usuario";
 var password = "Contraseña";
 
+
+
+
+
 if (!window.localStorage.getItem("Juan"))
 console.log("Verdadero")
 else 

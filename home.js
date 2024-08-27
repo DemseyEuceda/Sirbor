@@ -21,9 +21,42 @@
 
     }
 
-    let cris = new Sirbor("pelo");
+
+    
+    function cris(){
+        let corral1 = 30;
+        let corral2 = 40;
+        let corral3 = 20;
+        let inicio = corralA(corral1, 7);
+        console.log("estso chanchitos quedaron en corral 1", inicio)
+        let medio = corralB(corral2, 5, 8);
+        console.log("estos chanchitos quedaron en corral 2",medio)
+        let final = corralC(corral3, medio, inicio , 10, 3);
+        console.log("este es el total de chanchitos",final)
+
+    }
 
 
+    
+    function corralA(corral1, venta){
+        let total = corral1-venta;
+        return total;
+    }
+
+    
+    function corralB(corral2, venta, compra){
+        let total = corral2-venta+compra;
+        return total;
+    }
+
+    
+    function corralC(corral3, corral2, corral1, venta, chicharron){
+        let total = corral3-venta-chicharron;
+        total = corral2-15+corral1-10+corral3;
+        return total;
+
+    }
+    
 
 
 
@@ -136,7 +169,7 @@ function initHome(){
     list = res.data
     if(list.length !==0){
         list.forEach(element => {
-            console.log(element)
+            //console.log(element)
             document.getElementById("tabla").innerHTML += `            
                     <tr>
                         <th scope="row">${element.id}</th>
