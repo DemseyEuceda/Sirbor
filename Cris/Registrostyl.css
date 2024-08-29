@@ -1,0 +1,22 @@
+body{
+    
+    font-family: 'Times New Roman', Times, serif;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min min-height: 50vh;
+}
+
+.btn{
+
+    background-color: chartreuse;
+    border: 3px red;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: ;
+
+
+}
