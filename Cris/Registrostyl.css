@@ -1,11 +1,11 @@
 body{
-    
+    color: white;
     font-family: 'Times New Roman', Times, serif;
-    background-color: aqua;
+    background-color: rgb(27, 22, 39);
     display: flex;
     justify-content: center;
     align-items: center;
-    min min-height: 50vh;
+    min-height: 50vh;
 }
 
 .btn{
@@ -16,7 +16,10 @@ body{
 }
 
 .btn:hover{
-    background-color: ;
+    background-color:rgb(27, 22, 39) ;
 
 
+}
+.table{
+    color: white;
 }
